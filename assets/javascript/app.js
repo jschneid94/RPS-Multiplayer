@@ -13,6 +13,7 @@ var database = firebase.database();
 $("#signIn").on("click", function() {
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithRedirect(provider).then(function(result) {
+        console.log(result);
         if (result.credential) {
             // This gives you a Google Access Token. You can use it to access the Google API.
             var token = result.credential.accessToken;
@@ -29,9 +30,7 @@ $("#signIn").on("click", function() {
     firebase.auth().getRedirectResult().then(function(result) {
         if (result.credential) {
             $("#pageContent").show();
-            $("#signIn").hide();
-        }
-        var user = result.user;
+            $("#signIn").hide(); }
     }).catch(function(error) {
         console.log(error.code);
         console.log(error.message);
