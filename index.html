@@ -26,11 +26,18 @@
         </div>
     </div>
 
+    <!-- Google Sign-in Button -->
+    <div class="justify-content-center">
+        <button id="signIn" class="btn-lg">Sign in with Google</button>
+    </div>
+
     <div class="container">
 
+        <br />
+
         <!-- Train Schedule Section -->
-        <div id="trainSchedule" class="row rounded">
-            <div class="h3 col-md-12 text-light mb-0 py-3 bgHeader">Current Train Schedule</div>
+        <div id="trainSchedule" class="row border-dark rounded">
+            <div class="h3 col-md-12 text-light mb-0 py-3 bgHeader rounded-top">Current Train Schedule</div>
             <div class="table-responsive">
                 <table class="table table-hover mb-0">
                     <thead class="bgTableHead py-auto text-light">
@@ -51,8 +58,8 @@
         <br />
 
         <!-- Add Train Section -->
-        <div id="addTrain" class="row rounded bgContent">
-            <div class="h3 col-md-12 text-light py-3 bgHeader">Add Train</div>
+        <div id="addTrain" class="row rounded bgContent border-dark">
+            <div class="h3 col-md-12 text-light py-3 bgHeader rounded-top">Add Train</div>
             <div class="form-group col-md-12">
                     <label for="trainName">Train Name</label>
                     <input type="text" class="form-control" id="trainName">
@@ -81,14 +88,17 @@
 
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-auth.js"></script> -->
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+    <!-- Moment.js -->
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     
+    <!-- My JS -->
     <script src="assets/javascript/app.js"></script>
 
   </body>

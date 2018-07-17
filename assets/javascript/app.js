@@ -8,8 +8,33 @@ var config = {
     messagingSenderId: "383504353278"
 };
 firebase.initializeApp(config);
-
 var database = firebase.database();
+
+$("#signIn").on("click", function() {
+    var provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithRedirect(provider).then(function(result) {
+        console.log(result);
+        console.log("Log in successful");
+        $(".container").show();
+        $("")
+    }).catch(function(err) {
+        console.log(err);
+        console.log("Log in failed");
+    });
+}); 
+
+
+// firebase.auth().getRedirectResult().then(function(result) {
+//     if (result.credential) {
+//         var token = result.credential.accessToken;
+//     }
+//     var user = result.user;
+// }).catch(function(error) {
+//     var errorCode = error.code;
+//     var errorMessage = error.message;
+//     var email = error.email;
+//     var credential = error.credential;
+// });
 
 // When submit is pressed, push values into the database
 $("#submit").on("click", function() {
