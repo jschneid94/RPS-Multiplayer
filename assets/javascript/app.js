@@ -21,26 +21,27 @@ $("#signIn").on("click", function() {
             $("#pageContent").show();
             $("#signIn").hide();
           }
-        // The signed-in user info.
-        //var user = result.user;
     }).catch(function(err) {
         console.log(err);
         console.log("Log in failed");
     });
+
+    firebase.auth().getRedirectResult().then(function(result) {
+        if (result.credential) {
+            $("#pageContent").show();
+            $("#signIn").hide();
+        }
+        var user = result.user;
+    }).catch(function(error) {
+        console.log(error.code);
+        console.log(error.message);
+        console.log(error.email);
+        console.log(error.credential);
+    });
 }); 
 
 
-// firebase.auth().getRedirectResult().then(function(result) {
-//     if (result.credential) {
-//         var token = result.credential.accessToken;
-//     }
-//     var user = result.user;
-// }).catch(function(error) {
-//     var errorCode = error.code;
-//     var errorMessage = error.message;
-//     var email = error.email;
-//     var credential = error.credential;
-// });
+
 
 // When submit is pressed, push values into the database
 $("#submit").on("click", function() {
