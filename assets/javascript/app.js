@@ -11,34 +11,52 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
+// When submit is pressed, push values into the database
 $("#submit").on("click", function() {
     event.preventDefault();
     database.ref().push({
         name: $("#trainName").val().trim(),
         destination: $("#trainDestination").val().trim(),
-        trainTime: $("#trainTime").val().trim(),
+        trainTime: moment($("#trainTime").val().trim(), "HH:mm").format("HH:mm"),
         trainFrequency: $("#trainFrequency").val().trim()
     });
+    // Empty the input fields
+    $("#trainName").val("");
+    $("#trainDestination").val("");
+    $("#trainTime").val("");
+    $("#trainFrequency").val("");
 });
 
 database.ref().on("child_added", function(snapshot) {
     var newTrain = snapshot.val();
 
+    // Grab the first train time
+    var firstTime = moment(newTrain.trainTime, "HH:mm");
+    console.log("First train time: " + firstTime);
 
-    var time = moment(newTrain.trainTime);
-    var frequency = moment(newTrain.trainFrequency, "m mm");
-    time.add(frequency);
-    console.log(time);
+    // Calculate the difference in minutes since the first train time
+    var timeDiff = moment().diff(moment(firstTime), "minutes");
+    console.log("Time in minutes since first train: " + timeDiff);
+
+    // Modulus to calculate the time since the most recent train time
+    var timeRemainder = timeDiff % newTrain.trainFrequency;
+    console.log(timeRemainder);
     
+    // Minutes until train arrives
+    var minToTrain = newTrain.trainFrequency - timeRemainder;
+
+    // Arrival time is minutes until plus the current time
+    var nextArrival = moment().add(minToTrain, "minutes").format("HH:mm");
 
     var newRow = $("<tr>");
     var newName = $("<td>").text(newTrain.name);
     var newDestination = $("<td>").text(newTrain.destination);
-    var newFrequency = $("<td>").text(newTrain.trainFrequency);
-    //var employeeMonths = $("<td>").text();
-    //var employeeRate = $("<td>").text();
+    var newFrequency = $("<td>").text(newTrain.trainFrequency + " min");
+    var newArrival = $("<td>").text(nextArrival);
+    var newMinLeft = $("<td>").text(minToTrain);
 
-    $(newRow).append(newName, newDestination, newFrequency);
+
+    $(newRow).append(newName, newDestination, newFrequency, newArrival, newMinLeft);
     $("#tableBody").append(newRow);
 
 }, function(errorObject) {
