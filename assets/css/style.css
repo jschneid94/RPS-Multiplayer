@@ -1,0 +1,20 @@
+body {
+    background-color:#4579A0;
+}
+
+.bgTableHead {
+    background-color: #001320;
+}
+
+.bgHeader {
+    background-color:  #A35D22;
+}
+
+.bgContent {
+    background-color: #D2E0E9;
+}
+
+#trainImg {
+    width: 100%;
+    height: auto;
+}
