@@ -17,26 +17,25 @@ $("#signIn").on("click", function() {
         if (result.credential) {
             // This gives you a Google Access Token. You can use it to access the Google API.
             var token = result.credential.accessToken;
-            console.log(result);
+            console.log(result, token);
             console.log("Log in successful");
-            $("#pageContent").show();
-            $("#signIn").hide();
           }
     }).catch(function(err) {
         console.log(err);
         console.log("Log in failed");
     });
 
-    firebase.auth().getRedirectResult().then(function(result) {
-        if (result.credential) {
-            $("#pageContent").show();
-            $("#signIn").hide(); }
-    }).catch(function(error) {
-        console.log(error.code);
-        console.log(error.message);
-        console.log(error.email);
-        console.log(error.credential);
-    });
+    // firebase.auth().getRedirectResult().then(function(result) {
+    //     if (result.credential) {
+    //         $("#pageContent").show();
+    //         $("#signIn").hide(); 
+    //     }
+    // }).catch(function(error) {
+    //     console.log(error.code);
+    //     console.log(error.message);
+    //     console.log(error.email);
+    //     console.log(error.credential);
+    // });
 }); 
 
 

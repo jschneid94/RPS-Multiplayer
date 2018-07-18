@@ -7,16 +7,16 @@ body {
 }
 
 .bgHeader {
-    background-color:  #A35D22;
+    background-color:  rgb(147, 77, 19);
 }
 
 .bgContent {
     background-color: #D2E0E9;
 }
 
-.container {
+/* .container {
     display: none;
-}
+} */
 
 #trainImg {
     width: 100%;
