@@ -10,36 +10,20 @@ var config = {
 firebase.initializeApp(config);
 var database = firebase.database();
 
-$("#signIn").on("click", function() {
-    var provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithRedirect(provider).then(function(result) {
-        console.log(result);
-        if (result.credential) {
-            // This gives you a Google Access Token. You can use it to access the Google API.
-            var token = result.credential.accessToken;
-            console.log(result, token);
-            console.log("Log in successful");
-          }
-    }).catch(function(err) {
-        console.log(err);
-        console.log("Log in failed");
-    });
+// $("#signIn").on("click", function() {
+//     var provider = new firebase.auth.GoogleAuthProvider();
+//     firebase.auth().signInWithRedirect(provider).then(function(result) {
+//         // This gives you a Google Access Token. You can use it to access the Google API.
+//         var token = result.credential.accessToken;
+//         let user = result.user;
+//         console.log(result, token, user);
+//         console.log("Log in successful");
+//     }).catch(function(err) {
+//         console.log(err);
+//         console.log("Log in failed");
+//     });
 
-    // firebase.auth().getRedirectResult().then(function(result) {
-    //     if (result.credential) {
-    //         $("#pageContent").show();
-    //         $("#signIn").hide(); 
-    //     }
-    // }).catch(function(error) {
-    //     console.log(error.code);
-    //     console.log(error.message);
-    //     console.log(error.email);
-    //     console.log(error.credential);
-    // });
-}); 
-
-
-
+// }); 
 
 // When submit is pressed, push values into the database
 $("#submit").on("click", function() {
