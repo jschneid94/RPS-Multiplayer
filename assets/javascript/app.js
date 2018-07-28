@@ -46,10 +46,10 @@ database.ref().on("child_added", function(snapshot) {
 
     // Grab the first train time
     var firstTime = moment(newTrain.trainTime, "HH:mm");
-    console.log("First train time: " + firstTime);
+    console.log("First train time: " + moment(firstTime).format("HH:mm"));
 
     // Calculate the difference in minutes since the first train time
-    var timeDiff = moment().diff(moment(firstTime), "minutes");
+    var timeDiff = moment().diff(firstTime, "minutes");
     console.log("Time in minutes since first train: " + timeDiff);
 
     // Modulus to calculate the time since the most recent train time
